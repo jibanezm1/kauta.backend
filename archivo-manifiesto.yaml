@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nombre-del-pod
+spec:
+  containers:
+  - name: contenedor-de-la-aplicacion
+    image: nombre-de-tu-imagen:etiqueta
+    ports:
+    - containerPort: 3000
+    env:
+    - name: DB_HOST
+      value: kautapp-do-user-16587720-0.c.db.ondigitalocean.com
+    - name: DB_PORT
+      value: "25060"  # Es importante usar comillas para indicar que es un valor numérico
+    - name: DB_USER
+      value: doadmin
+    - name: DB_PASSWORD
+      value: Casa123___123
+    - name: DB_NAME
+      value: defaultdb
