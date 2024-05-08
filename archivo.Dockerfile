@@ -1,6 +1,9 @@
 # Usa una imagen de Node.js como base
 FROM node:alpine
 
+# Instala el cliente MySQL
+RUN apk add --no-cache mysql-client
+
 # Establece el directorio de trabajo en /app
 WORKDIR /app
 
@@ -18,4 +21,3 @@ EXPOSE 3000
 
 # Comando para ejecutar la aplicación cuando se inicie el contenedor
 CMD ["node", "app.js"]
-
