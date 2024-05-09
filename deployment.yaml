@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kauta-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kauta-backend
+  template:
+    metadata:
+      labels:
+        app: kauta-backend
+    spec:
+      containers:
+      - name: kauta-backend
+        image: registry.digitalocean.com/kautabackend/kauta.backend:1.0.0
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: do-registry

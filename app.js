@@ -8,12 +8,12 @@ require('dotenv').config(); // Cargar variables de entorno desde .env
 
 // Importar rutas
  const localizacionRoutes = require("./src/routes/localizacionRoutes");
+ const personasRoutes = require("./src/routes/personasRoutes");
 app.use("/localizacion", localizacionRoutes);
 
-// Usar las rutas
-app.use('/localizacion', localizacionRoutes);
+ app.use("/persona",personasRoutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en el puerto ${PORT} ahora vamos a ver que pasa!!!`);
 });
