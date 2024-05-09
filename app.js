@@ -9,9 +9,12 @@ require('dotenv').config(); // Cargar variables de entorno desde .env
 // Importar rutas
  const localizacionRoutes = require("./src/routes/localizacionRoutes");
  const personasRoutes = require("./src/routes/personasRoutes");
-app.use("/localizacion", localizacionRoutes);
+ const authRoutes = require('./src/routes/authRoutes');
 
- app.use("/persona",personasRoutes)
+
+app.use("/localizacion", localizacionRoutes);
+app.use('/auth', authRoutes);
+app.use("/persona",personasRoutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

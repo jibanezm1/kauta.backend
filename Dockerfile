@@ -1,8 +1,8 @@
 # Usa una imagen de Node.js como base
-FROM node:alpine
+FROM node:16 AS base
 
-# Instala el cliente MySQL
-RUN apk add --no-cache mysql-client
+# Instala el cliente MySQL, Python y herramientas de compilación
+RUN apt-get update && apt-get install -y default-mysql-client python build-essential
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
@@ -12,6 +12,12 @@ COPY package*.json ./
 
 # Instala las dependencias de la aplicación
 RUN npm install
+
+# Instala el controlador MySQL para Sequelize
+RUN npm install mysql2
+
+# Compila bcrypt dentro del contenedor
+RUN npm rebuild bcrypt --build-from-source
 
 # Copia el código de la aplicación al contenedor
 COPY . .
